@@ -26,4 +26,20 @@ public class PackageControllerTests
         Assert.IsInstanceOfType(result, typeof(OkObjectResult));
     }
 
+    [TestMethod]
+    public void GetPackageById_FromInvalidParcelId_ReturnsBadRequestResult()
+    {
+        IActionResult result = _packageController.GetPackageById("1a");
+
+        Assert.IsInstanceOfType(result, typeof(BadRequestObjectResult));
+    }
+
+    [TestMethod]
+    public void GetPackageById_ValidParcelId_ReturnsOkObjectResult()
+    {
+        IActionResult result = _packageController.GetPackageById("999000000000000000");
+
+        Assert.IsInstanceOfType(result, typeof(OkObjectResult));
+    }
+
 }

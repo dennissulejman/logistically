@@ -44,4 +44,10 @@ public class PackageService
     {
         return _packageDbContext.Packages.ToList();
     }
+
+    public Package? GetPackageById(string parcelId)
+    {
+        return _packageDbContext.Packages.Find(parcelId);
+    }
+
 }

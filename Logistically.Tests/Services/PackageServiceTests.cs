@@ -26,4 +26,21 @@ public class PackageServiceTests
 
         Assert.IsTrue(result.Any());
     }
+
+    [TestMethod]
+    public void GetPackageById_FromExistingId_ReturnsPackage()
+    {
+        Package? result = _packageService.GetPackageById(Constants.BaseParcelId);
+
+        Assert.IsInstanceOfType(result, typeof(Package));
+    }
+
+    [TestMethod]
+    public void GetPackageById_FromNonExistingId_ReturnsNull()
+    {
+        Package? result = _packageService.GetPackageById("1a");
+
+        Assert.IsNull(result);
+    }
+
 }
