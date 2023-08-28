@@ -7,6 +7,7 @@ public static class Constants
     public static readonly int MaximumPackageHeightInCentimeters = 60;
     public static readonly int MaximumPackageWidthInCentimeters = 60;
 
+    public static readonly string BaseParcelId = "999000000000000000";
     public static readonly string PackageDb = "PackageDb";
     public static readonly int ParcelIdLength = 18;
     public static readonly string ParcelIdStartingNumbers = "999";
