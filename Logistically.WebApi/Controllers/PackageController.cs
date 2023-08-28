@@ -42,4 +42,20 @@ public class PackageController : ControllerBase
             : Ok(packageResult);
     }
 
+    [HttpPost]
+    [ProducesResponseType(typeof(Package), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(Package), StatusCodes.Status400BadRequest)]
+    public IActionResult CreatePackage([FromBody] CreatePackageRequest createPackageRequest)
+    {
+        Package? newPackage = _packageService.CreatePackage(createPackageRequest);
+
+        if (newPackage?.IsValid == true)
+        {
+            return CreatedAtRoute(nameof(Package), newPackage);
+        }
+        else
+        {
+            return BadRequest(newPackage);
+        }
+    }
 }

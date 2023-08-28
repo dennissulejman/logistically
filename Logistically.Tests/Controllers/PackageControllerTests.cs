@@ -42,4 +42,33 @@ public class PackageControllerTests
         Assert.IsInstanceOfType(result, typeof(OkObjectResult));
     }
 
+    [TestMethod]
+    public void CreatePackage_FromValidCreatePackageRequest_ReturnsCreatedAtRouteResult()
+    {
+        IActionResult result = _packageController.CreatePackage(
+            new(
+                1,
+                1,
+                1,
+                1
+            )
+        );
+
+        Assert.IsInstanceOfType(result, typeof(CreatedAtRouteResult));
+    }
+
+    [TestMethod]
+    public void CreatePackage_FromInvalidCreatePackageRequest_ReturnsBadRequstObjectResult()
+    {
+        IActionResult result = _packageController.CreatePackage(
+            new(
+                30000,
+                1,
+                1,
+                1
+            )
+        );
+
+        Assert.IsInstanceOfType(result, typeof(BadRequestObjectResult));
+    }
 }

@@ -50,4 +50,19 @@ public class PackageService
         return _packageDbContext.Packages.Find(parcelId);
     }
 
+    public Package? CreatePackage(CreatePackageRequest createPackageRequest)
+    {
+        Package newPackage = new(
+            PackageHelpers.GetNewParcelId(_packageDbContext),
+            createPackageRequest.Weight,
+            createPackageRequest.Length,
+            createPackageRequest.Height,
+            createPackageRequest.Width
+        );
+
+        _packageDbContext.Add(newPackage);
+        _packageDbContext.SaveChanges();
+
+        return newPackage;
+    }
 }

@@ -43,4 +43,11 @@ public class PackageServiceTests
         Assert.IsNull(result);
     }
 
+    [TestMethod]
+    public void CreatePackage_ReturnsPackage()
+    {
+        Package? result = _packageService.CreatePackage(new(1, 1, 1, 1));
+
+        Assert.IsInstanceOfType(result, typeof(Package));
+    }
 }
